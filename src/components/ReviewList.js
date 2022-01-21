@@ -19,12 +19,17 @@ function ReviewListItem({ item }) {
   )
 }
 
-function ReviewList({ items }) {
+function ReviewList({items}) {
   return (
-    <ul>{ items.map((item) => {
-      return <li><ReviewListItem item={item} /></li>
+    <ul>
+      {items.map((item) => {
+        return (
+          <li>
+            <ReviewListItem item={ item } />
+          </li>
+        )
       })}
-  </ul>
+    </ul>
   )
 }
 
