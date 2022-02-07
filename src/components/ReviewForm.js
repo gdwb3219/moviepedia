@@ -1,6 +1,15 @@
 import { useState } from "react"
 import './ReviewForm.css'
 
+function sanitize(type, value) {
+  switch (type) {
+    case 'number':
+      return Number(value) || 0
+    default:
+      return value
+  }
+}
+
 function ReviewForm() {
   const [values, setValues] = useState({
     title: '',
@@ -9,10 +18,10 @@ function ReviewForm() {
   })
 
   const handleChange = (e) => {
-    const {name, value} = e.target
+    const {name, value, type} = e.target
     setValues((prevValues) => ({
       ...prevValues,
-      [name]: value,
+      [name]: sanitize(type, value)
     }))
   }
 
