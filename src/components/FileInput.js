@@ -6,23 +6,22 @@ function FileInput({ name, value, onChange }) {
   const handleChange = (e) => {
     const nextValue = e.target.files[0]
     onChange(name, nextValue)
+    // console.log(e.target.value)
   }
 
-  const handleClearClick = () => {
+  const handleClearChange = () => {
     const inputNode = inputRef.current
     if (!inputNode) return
-    
+
     inputNode.value = ''
     onChange(name, null)
-
   }
 
   return (
     <div>
-      <input type="file" onChange={handleChange} ref={inputRef}/>
-      {value && <button onClick={handleClearClick}>X</button>}
+      <input type="file" onChange={handleChange} ref={inputRef} />
+      {value && <button onClick={handleClearChange}>X</button>}
     </div>
-  
   )
 }
 

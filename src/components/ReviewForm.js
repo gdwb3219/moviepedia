@@ -15,7 +15,6 @@ function ReviewForm() {
       ...prevValues,
       [name]: value,
     }))
-    
   }
 
   const handleInputChange = (e) => {
