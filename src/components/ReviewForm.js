@@ -15,13 +15,11 @@ function ReviewForm() {
       ...prevValues,
       [name]: value,
     }))
-    
   }
 
   const handleInputChange = (e) => {
     const {name, value} = e.target
     handleChange(name, value)
-    console.log(e.target.value)
   }
 
   const handleSubmit = (e) => {
