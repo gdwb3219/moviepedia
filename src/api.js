@@ -12,6 +12,7 @@ export async function getReviews({order = 'createdAt', offset = 0, limit = 6}) {
 
 
 export async function createReviews(formData) {
+  throw new Error('버그가 아니라 기능입니다')
   const response = await fetch(`${BASE_URL}/film-reviews`, {
     method: 'POST',
     body: formData,

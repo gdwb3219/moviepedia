@@ -12,6 +12,8 @@ const INITIAL_VALUES = {
 }
 
 function ReviewForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submittingError, setSubmittingError] = useState(null)
   const [values, setValues] = useState(INITIAL_VALUES)
 
   const handleChange = (name, value) => {
@@ -33,7 +35,16 @@ function ReviewForm() {
     formData.append('rating', values.rating)
     formData.append('content', values.content)
     formData.append('imgFile', values.imgFile)
-    await createReviews(formData)
+    try {
+      setSubmittingError(null)
+      setIsSubmitting(true)
+      await createReviews(formData)
+    } catch (error) {
+      setSubmittingError(error)
+      return
+    } finally {
+      setSubmittingError(false)
+    }
     setValues(INITIAL_VALUES);
   }
 
@@ -43,7 +54,8 @@ function ReviewForm() {
       <input name="title" value={values.title} onChange={handleInputChange} />
       <RatingInput name="rating" value={values.rating} onChange={handleChange} />
       <textarea name="content" value={values.content} onChange={handleInputChange} />
-      <button type="submit">확인</button>
+      <button type="submit" disabled={isSubmitting}>확인</button>
+      {submittingError?.message && <div>{submittingError.message}</div>}
     </form>
   )
 }
