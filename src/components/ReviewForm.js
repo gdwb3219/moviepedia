@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { createReviews } from "../api"
+import { createReview } from "../api"
 import FileInput from "./FileInput"
 import RatingInput from "./RatingInput"
 import './ReviewForm.css'
@@ -38,12 +38,12 @@ function ReviewForm() {
     try {
       setSubmittingError(null)
       setIsSubmitting(true)
-      await createReviews(formData)
+      await createReview(formData)
     } catch (error) {
       setSubmittingError(error)
       return
     } finally {
-      setSubmittingError(false)
+      setIsSubmitting(false)
     }
     setValues(INITIAL_VALUES);
   }
