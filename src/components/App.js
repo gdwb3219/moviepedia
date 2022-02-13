@@ -48,6 +48,10 @@ function App() {
   const handleLoadMore = () => {
     handleLoad({ order, offset, limit: LIMIT})
   }
+
+  const handleSubmitSuccess = (review) => {
+    setItems((prevItems) => [review, ...prevItems])
+  }
   
   useEffect(() => {
     handleLoad({order, offset: 0, limit: LIMIT})
@@ -59,7 +63,7 @@ function App() {
       <button onClick={handleNewestClick}>최신순</button>
       <button onClick={handleBestClick}>별점순</button>
     </div>
-    <ReviewForm />
+    <ReviewForm onSubmitSuccess={handleSubmitSuccess} />
     <ReviewList items={sortedItems} onDelete={handleDelete} />
     {hasNext && <button disabled={isLoading} onClick={handleLoadMore}>더 보기</button>}
     {loadingError?.message && <span>{loadingError.message}</span>}
