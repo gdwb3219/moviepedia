@@ -55,7 +55,13 @@ function ReviewList({items, onDelete, onUpdate, onUpdateSuccess }) {
           
           return (
             <li key={item.id}>
-            <ReviewForm initialValues={initialValues} initialPreview={imgUrl} onCancel={handleCancel} onSubmit={handleSubmit} onSubmitSuccess={handleSubmitSuccess} />
+            <ReviewForm 
+              initialValues={initialValues} 
+              initialPreview={imgUrl} 
+              onCancel={handleCancel} 
+              onSubmit={handleSubmit} 
+              onSubmitSuccess={handleSubmitSuccess}
+            />
             </li>
           )
         }

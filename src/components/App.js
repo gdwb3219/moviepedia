@@ -75,7 +75,12 @@ function App() {
       <button onClick={handleBestClick}>별점순</button>
     </div>
     <ReviewForm onSubmit={createReview} onSubmitSuccess={handleCreateSuccess} />
-    <ReviewList items={sortedItems} onDelete={handleDelete} onUpdate={updateReview} onUpdateSuccess={handleUpdateSuccess} />
+    <ReviewList
+      items={sortedItems}
+      onDelete={handleDelete}
+      onUpdate={updateReview}
+      onUpdateSuccess={handleUpdateSuccess}
+    />
     {hasNext && <button disabled={isLoading} onClick={handleLoadMore}>더 보기</button>}
     {loadingError?.message && <span>{loadingError.message}</span>}
   </div>
