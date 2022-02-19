@@ -37,8 +37,7 @@ function App() {
     }
     setOffset(options.offset + reviews.length)
     setHasNext(paging.hasNext)
-    }, [getReviewsAsync]
-  )
+    }, [getReviewsAsync])
 
   const handleLoadMore = () => {
     handleLoad({ order, offset, limit: LIMIT})
