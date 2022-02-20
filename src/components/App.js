@@ -1,5 +1,5 @@
 import ReviewList from "./ReviewList";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { createReview, deleteReivew, getReviews, updateReview } from "../api";
 import ReviewForm from "./ReviewForm";
 import useAsync from "./hooks/useAsync";
@@ -9,7 +9,7 @@ import LocaleSelect from "./LocaleSelect";
 const LIMIT = 6
 
 function App() {
-  const [locale, setLocale] = useContext('ko')
+  const [locale, setLocale] = useState('ko')
   const [items, setItems] = useState([])
   const [order, setOrder] = useState('createdAt')
   const [offset, setOffset] = useState(0)
