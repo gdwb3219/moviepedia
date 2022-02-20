@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { createReview, deleteReivew, getReviews, updateReview } from "../api";
 import ReviewForm from "./ReviewForm";
 import useAsync from "./hooks/useAsync";
+import LocaleContext from "./contexts/LocaleContext";
 
 const LIMIT = 6
 
@@ -63,21 +64,23 @@ function App() {
   }, [order, handleLoad])
   
   return (
-  <div>
-    <div>
-      <button onClick={handleNewestClick}>최신순</button>
-      <button onClick={handleBestClick}>별점순</button>
-    </div>
-    <ReviewForm onSubmit={createReview} onSubmitSuccess={handleCreateSuccess} />
-    <ReviewList
-      items={sortedItems}
-      onDelete={handleDelete}
-      onUpdate={updateReview}
-      onUpdateSuccess={handleUpdateSuccess}
-    />
-    {hasNext && <button disabled={isLoading} onClick={handleLoadMore}>더 보기</button>}
-    {loadingError?.message && <span>{loadingError.message}</span>}
-  </div>
+    <LocaleContext.Provider value={'ko'}>
+      <div>
+        <div>
+          <button onClick={handleNewestClick}>최신순</button>
+          <button onClick={handleBestClick}>별점순</button>
+        </div>
+        <ReviewForm onSubmit={createReview} onSubmitSuccess={handleCreateSuccess} />
+        <ReviewList
+          items={sortedItems}
+          onDelete={handleDelete}
+          onUpdate={updateReview}
+          onUpdateSuccess={handleUpdateSuccess}
+        />
+        {hasNext && <button disabled={isLoading} onClick={handleLoadMore}>더 보기</button>}
+        {loadingError?.message && <span>{loadingError.message}</span>}
+      </div>
+    </LocaleContext.Provider>
   );
 }
 
