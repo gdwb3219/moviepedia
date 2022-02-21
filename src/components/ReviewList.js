@@ -14,7 +14,6 @@ function ReviewListItem({ item, onDelete, onEdit }) {
 
   const handleDeleteClick = () => {
     onDelete(item.id)
-
   }
 
   const handleEditClick = () => {
