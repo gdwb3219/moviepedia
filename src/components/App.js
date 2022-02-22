@@ -2,9 +2,11 @@ import ReviewList from "./ReviewList";
 import { useCallback, useEffect, useState } from "react";
 import { createReview, deleteReivew, getReviews, updateReview } from "../api";
 import ReviewForm from "./ReviewForm";
-import useAsync from "./hooks/useAsync";
-import { LocaleProvider } from "./contexts/LocaleContext";
+import useAsync from "../hooks/useAsync";
+import { LocaleProvider } from "../contexts/LocaleContext";
 import LocaleSelect from "./LocaleSelect";
+
+
 
 const LIMIT = 6
 

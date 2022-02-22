@@ -1,4 +1,5 @@
-import { useLocale, useSetLocale } from "./contexts/LocaleContext"
+import { useLocale, useSetLocale } from "../contexts/LocaleContext"
+
 
 function LocaleSelect() {
   const locale = useLocale()
